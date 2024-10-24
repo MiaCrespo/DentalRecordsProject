@@ -41,20 +41,19 @@ public class DentalRecordsProject {
                     validTeeth = true;
                 }
             }
-            DentalRecords[cycles][0][0] = name;  // Store the person's name
+            DentalRecords[cycles][0][0] = name;  // to store the persons name
 
             // Store the teeth data with position numbers
             for (int row = 0; row < 2; row++) {
                 String insertTeeth = "";
                 if (row == 0) {
-                    insertTeeth = uppers.toUpperCase();  // Get upper teeth
+                    insertTeeth = uppers.toUpperCase();  // user inputs upper teeth
                 } else if (row == 1) {
-                    insertTeeth = lowers.toUpperCase();  // Get lower teeth
+                    insertTeeth = lowers.toUpperCase();  // user inputs lower teeth
                 }
 
-                // Store teeth with tooth number
+                // store the teeth with tooth number
                 for (int column = 0; column < insertTeeth.length(); column++) {
-                    // Adjust to ensure first position is filled correctly
                     DentalRecords[cycles][row + 1][column + 1] = String.valueOf(insertTeeth.charAt(column));
                 }
             }
@@ -72,22 +71,22 @@ public class DentalRecordsProject {
             }
             if (input.equals("P")) {
                 System.out.println();
-                for (int i = 0; i < DentalRecords.length - 1; i++) { // First dimension (layers)
+                for (int i = 0; i < DentalRecords.length - 1; i++) { // 1st dimension (the layers)
                     System.out.println(DentalRecords[i][0][0]);
-                    for (int j = 1; j < DentalRecords[i].length; j++) { // Second dimension (rows)
+                    for (int j = 1; j < DentalRecords[i].length; j++) { // 2nd dimension (the rows)
                         if (j == 1) {
                             System.out.print("Uppers: ");
                         } else if (j == 2) {
                             System.out.print("Lowers: ");
                         }
-                        for (int k = 1; k < DentalRecords[i][j].length; k++) { // Third dimension (columns)
+                        for (int k = 1; k < DentalRecords[i][j].length; k++) { // 3rd dimension (the columns)
                             if (DentalRecords[i][j][k] != null) {
                                 System.out.print(k + ":" + DentalRecords[i][j][k] + " ");
                             } else if (DentalRecords[i][j][k] == null) {
                                 System.out.print(" ");
                             }
                         }
-                        System.out.println(); // New line after each row
+                        System.out.println();
                     }
                 }
                 System.out.println();
@@ -144,13 +143,13 @@ public class DentalRecordsProject {
                         l = 1;
                     }
 
-                    String replaceTooth = DentalRecords[memberID][l + 1][toothnum + 1]; // Adjusted to +1 to match index
+                    String replaceTooth = DentalRecords[memberID][l + 1][toothnum + 1]; // adjusted to +1 to match the index
                     if (replaceTooth.equals("M")) {
                         System.out.print("Missing tooth, try again: ");
                         continue;
                     } else {
-                        DentalRecords[memberID][l + 1][toothnum + 1] = "M"; // Adjusted to +1 to match index
-                        replacedtooth = true; // Mark as replaced once done
+                        DentalRecords[memberID][l + 1][toothnum + 1] = "M"; // also adjusted to +1 to match the index
+                        replacedtooth = true; // replaced once done
                     }
                     System.out.println();
                     System.out.print("(P)rint, (E)xtract, (R)oot, e(X)it: ");
